@@ -12,7 +12,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
 	return (
-		<html lang='en'>
+		<html
+			lang='en'
+			className='scroll-smooth'>
 			<body className={inter.className}>
 				{process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? <GoogleAnalytics ga_id={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} /> : null}
 				{children}
