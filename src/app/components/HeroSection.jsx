@@ -26,7 +26,7 @@ const HeroSection = () => {
 							repeat={Infinity}
 						/>
 					</h1>
-					<p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
+					<p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl text-justify">
 						Unlock the Full Potential of Your Online Presence! 🌐💡 As a seasoned web developer and SEO expert, I craft visually
 						stunning websites that not only captivate audiences but also rank high in search results. Elevate your brand's digital
 						footprint with tailored solutions designed for success. Let's turn your vision into a compelling online reality! 🚀🔍

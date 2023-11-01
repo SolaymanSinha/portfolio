@@ -4,40 +4,13 @@ import GithubIcon from "../../../public/github-icon.svg";
 import LinkedinIcon from "../../../public/linkedin-icon.svg";
 import Link from "next/link";
 import Image from "next/image";
+import { useForm, ValidationError } from "@formspree/react";
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
 const EmailSection = () => {
-	const [emailSubmitted, setEmailSubmitted] = useState(false);
-
-	const handleSubmit = async e => {
-		e.preventDefault();
-		const data = {
-			email: e.target.email.value,
-			subject: e.target.subject.value,
-			message: e.target.message.value,
-		};
-		const JSONdata = JSON.stringify(data);
-		const endpoint = "/api/send";
-
-		// Form the request for sending data to the server.
-		const options = {
-			// The method is POST because we are sending data.
-			method: "POST",
-			// Tell the server we're sending JSON.
-			headers: {
-				"Content-Type": "application/json",
-			},
-			// Body of the request is the JSON data we created above.
-			body: JSONdata,
-		};
-
-		const response = await fetch(endpoint, options);
-		const resData = await response.json();
-
-		if (response.status === 200) {
-			console.log("Message sent.");
-			setEmailSubmitted(true);
-		}
-	};
+	const [state, handleSubmit] = useForm("mwkdzpeg");
+	const router = useRouter();
 
 	return (
 		<section
@@ -67,8 +40,14 @@ const EmailSection = () => {
 				</div>
 			</div>
 			<div>
-				{emailSubmitted ? (
-					<p className="text-green-500 text-sm mt-2">Email sent successfully!</p>
+				{state.succeeded == true ? (
+					<div className="card my-auto mx-auto flex justify-center items-center h-full">
+						<h2>
+							<p className="flex justify-end items-center my-auto h-full w-full">
+								Thanks for reaching out! I will get back to you soon.
+							</p>
+						</h2>
+					</div>
 				) : (
 					<form
 						className="flex flex-col"
@@ -87,20 +66,10 @@ const EmailSection = () => {
 								className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
 								placeholder="jacob@google.com"
 							/>
-						</div>
-						<div className="mb-6">
-							<label
-								htmlFor="subject"
-								className="text-white block text-sm mb-2 font-medium">
-								Subject
-							</label>
-							<input
-								name="subject"
-								type="text"
-								id="subject"
-								required
-								className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-								placeholder="Just saying hi"
+							<ValidationError
+								prefix="Email"
+								field="email"
+								errors={state.errors}
 							/>
 						</div>
 						<div className="mb-6">
@@ -110,17 +79,22 @@ const EmailSection = () => {
 								Message
 							</label>
 							<textarea
-								name="message"
 								id="message"
+								name="message"
 								className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
 								placeholder="Let's talk about..."
 							/>
+							<ValidationError
+								prefix="Message"
+								field="message"
+								errors={state.errors}
+							/>
 						</div>
 						<button
-							disabled
 							type="submit"
-							className="bg-gray-500 text-white font-medium py-2.5 px-5 rounded-lg w-full">
-							Send Message - Not Working
+							className="bg-primary-600 text-white font-medium py-2.5 px-5 rounded-lg w-full"
+							disabled={state.submitting}>
+							Send Message
 						</button>
 					</form>
 				)}
