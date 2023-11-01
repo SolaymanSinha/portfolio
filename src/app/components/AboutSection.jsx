@@ -40,6 +40,7 @@ const AboutSection = () => {
 			<div className="md:grid md:grid-cols-2 gap-8 items-center py-4 px-4 xl:gap-16 sm:py-16 xl:px-16">
 				<Image
 					src="/images/about-image.png"
+					alt="About Image"
 					width={500}
 					height={500}
 				/>
@@ -48,8 +49,8 @@ const AboutSection = () => {
 					<p className="text-base lg:text-lg">
 						I am a full stack web developer with a passion for creating interactive and responsive web applications. I have
 						experience working with JavaScript, React, Node.js, Express, HTML, CSS, and Git. I am a quick learner and I am always
-						looking to expand my knowledge and skill set. I am a team player and I am excited to work with others to create
-						amazing applications.
+						looking to expand my knowledge and skill set. I want to become the best web developer in Bangladesh. I am a team
+						player and I am excited to work with others to create amazing applications.
 					</p>
 					<div className="flex flex-row justify-start mt-4">
 						<TabButton
