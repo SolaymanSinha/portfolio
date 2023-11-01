@@ -5,8 +5,9 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-	title: "Shah Solayman Sinha",
-	description: "A Web Developer, Freelancer, Email Template Designer",
+	title: "Best Web Developer in Bangladesh: Top Rated",
+	description:
+		"Unleash Web Magic 🪄 | Elevate User Experience with Expertly Crafted Websites! 🔮 | Your Gateway to Stunning, High-Performance Web Solutions 🌟 | Let's Build Something Extraordinary Together! 💡✨",
 };
 
 export default function RootLayout({ children }) {
